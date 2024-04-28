@@ -131,8 +131,6 @@ const getApiKey = async (): Promise<string> => {
 };
 
 const DeepgramContextProvider = ({ children }: DeepgramContextInterface) => {
-
-  console.log("in deepgram context provider")
   // const { toast } = useToast();
   const [ttsOptions, setTtsOptions] = useState<SpeakSchema>();
   const [sttOptions, setSttOptions] = useState<LiveSchema>();
@@ -143,8 +141,6 @@ const DeepgramContextProvider = ({ children }: DeepgramContextInterface) => {
   const connect = useCallback(async () => {
     if (!connection && !connecting) {
       setConnecting(true);
-
-      console.log("attempting to connection")
 
       const connection = new LiveClient(
         await getApiKey(),
@@ -159,7 +155,6 @@ const DeepgramContextProvider = ({ children }: DeepgramContextInterface) => {
         }
       );
 
-      console.log("connection at authentication", connection)
       setConnection(connection);
       setConnecting(false);
     }
@@ -201,18 +196,16 @@ const DeepgramContextProvider = ({ children }: DeepgramContextInterface) => {
       });
 
       connection.addListener(LiveTranscriptionEvents.Close, () => {
-        console.log("The connection to Deepgram closed, we'll attempt to reconnect")
-        // toast("The connection to Deepgram closed, we'll attempt to reconnect.");
+        toast("The connection to Deepgram closed, we'll attempt to reconnect.");
         setConnectionReady(false);
         connection.removeAllListeners();
         setConnection(undefined);
       });
 
       connection.addListener(LiveTranscriptionEvents.Error, () => {
-        // toast(
-        //   "An unknown error occured. We'll attempt to reconnect to Deepgram."
-        // );
-        console.log("An unknown error occured. We'll attempt to reconnect to Deepgram.")
+        toast(
+          "An unknown error occured. We'll attempt to reconnect to Deepgram."
+        );
         setConnectionReady(false);
         connection.removeAllListeners();
         setConnection(undefined);
@@ -223,9 +216,7 @@ const DeepgramContextProvider = ({ children }: DeepgramContextInterface) => {
       setConnectionReady(false);
       connection?.removeAllListeners();
     };
-  }, [connection]);
-
-  //}, [connection, toast]);
+  }, [connection, toast]);
 
   return (
     <DeepgramContext.Provider
