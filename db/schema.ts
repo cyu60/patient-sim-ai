@@ -1,4 +1,5 @@
 import { relations } from "drizzle-orm";
+import { primaryKey } from "drizzle-orm/mysql-core";
 import {
   serial,
   text,
@@ -19,18 +20,39 @@ export const clinicalCases = pgTable("clinical_cases", {
   patientName: text("patient_name").notNull(),
   age: integer("age").notNull(),
   gender: text("gender").notNull(),
-  raceEthnicity: text("race_ethnicity"),
-  identification: text("identification"),
-  physicalTraits: text("physical_traits"),
-  medicalHistory: text("medical_history"),
-  patientBehavior: text("patient_behavior"),
-  diagnosis: text("diagnosis"),
+  raceEthnicity: text("race_ethnicity").default("Not Specified").notNull(),
+  weight: integer("weight").notNull(),
+  height: text("height").notNull(),
+  importantPhysicalDetails: text("important_physical_details").default("Not Specified").notNull(),
+  chiefComplaint: text("chief_complaint").notNull(),
+  patientMedicalHistory: text("patient_medical_history").default("None").notNull(),
+  patientHealthBelief: text("patient_health_belief").notNull(),
+  patientPrimaryConcern: text("patient_primary_concern").notNull(),
+  pastMedicalHistory: text("past_medical_history").default("No previous hospitalizations, no chronic diseases, no past surgeries, no previous accidents or injuries").notNull(), 
+  obGynHistory: text("ob/gyn_history").default("None").notNull(),
+  medications: text("medications").notNull(),
+  allergies: text("allergies").default("None").notNull(),
+  exposureHistory: text("exposure_history").notNull(),
+  immunizations: text("immunizations").notNull(),
+  preventiveHealthcare: text("preventive_healthcare").notNull(),
+  previousImportantTests: text("previous_important_tests").default("None").notNull(),
+  familyHistory: text("family_history").default("Healthy").notNull(),
+  socialHistory: text("social_history").notNull(),
+  habits: text("habits").notNull(),
+  patientBehavior: text("patient_behavior").notNull(),
+  responsiveness: text("responsiveness").notNull(),
+  workingDiagnosis: text("working_diagnosis").notNull(),
+  diagnosisRationale: text("diagnosis_rationale").notNull(),
+  differentialDiagnosis: text("differential_diagnosis").notNull(),
+  differentialDiagnosisRationales: text("differential_diagnosis_rationales").notNull(),
 });
 
 export const courses = pgTable("courses", {
-  id: uuid("id").primaryKey(),
+  id: serial("id").primaryKey(),
   courseName: text("course_name").default("Untitled").notNull(),
   timePeriod: text("time_period").notNull(),
+  students: integer("students").default(0).notNull(),
+  cases: integer("cases").default(0).notNull()
 });
 
 // Define associations if required
