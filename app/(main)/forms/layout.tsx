@@ -59,7 +59,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
         <div className="space-y-0.5">
           <h2 className="text-2xl font-bold tracking-tight">Patient Information</h2>
           <p className="text-muted-foreground">
-            Manage the patient's feeatures, history, and diagnosis
+            Manage the features, history, and diagnosis of the patient
           </p>
         </div>
         <Separator className="my-6" />

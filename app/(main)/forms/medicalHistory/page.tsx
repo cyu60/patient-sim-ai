@@ -8,7 +8,7 @@ export default function SettingsPhysicalTraitsPage() {
       <div>
         <h3 className="text-lg font-medium">Medical History</h3>
         <p className="text-sm text-muted-foreground">
-          Patient's medical history
+          Patient medical history
         </p>
       </div>
       <Separator />

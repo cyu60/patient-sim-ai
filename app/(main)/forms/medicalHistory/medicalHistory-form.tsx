@@ -73,7 +73,7 @@ export function MedicalHistoryForm() {
                 <Input placeholder="Fever, pain, coughing, etc." {...field} />
               </FormControl>
               <FormDescription>
-                This is the patient's primary general complaint
+                This is the primary general complaint from the patient
               </FormDescription>
             </FormItem>
           )}
@@ -89,7 +89,7 @@ export function MedicalHistoryForm() {
                 <Input placeholder="Last fever 1 year ago, sometime stomachache, etc." {...field} />
               </FormControl>
               <FormDescription>
-                This is the patient's symptom history and details, intensity levels, etc.
+                This is the  symptom history and details, intensity levels, etc. of the patient
               </FormDescription>
             </FormItem>
           )}
@@ -100,7 +100,7 @@ export function MedicalHistoryForm() {
           name="healthBelief"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Patient's Health Belief</FormLabel>
+              <FormLabel>Health Beliefs of Patient</FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} />
               </FormControl>
@@ -116,7 +116,7 @@ export function MedicalHistoryForm() {
           name="externalConcerns"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Patient's Health Belief</FormLabel>
+              <FormLabel>General Concerns of Patient</FormLabel>
               <FormControl>
                 <Input placeholder="General concerns" {...field} />
               </FormControl>
@@ -132,7 +132,7 @@ export function MedicalHistoryForm() {
           name="externalConcerns"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Patient's General Concerns</FormLabel>
+              <FormLabel>Patient General Concerns</FormLabel>
               <FormControl>
                 <Input placeholder="General concerns" {...field} />
               </FormControl>
@@ -148,7 +148,7 @@ export function MedicalHistoryForm() {
           name="generalHistory"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Patient's General Medical History</FormLabel>
+              <FormLabel>Patient General Medical History</FormLabel>
               <FormControl>
                 <Input placeholder="Medical History" {...field} />
               </FormControl>
@@ -164,12 +164,12 @@ export function MedicalHistoryForm() {
           name="gynObHistory"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Patient's OB / Gynecologist History</FormLabel>
+              <FormLabel>Patient OB / Gynecologist History</FormLabel>
               <FormControl>
                 <Input placeholder="Medical History" {...field} />
               </FormControl>
               <FormDescription>
-                Patient's OB / Gynecologist History
+                Patient OB / Gynecologist History
               </FormDescription>
             </FormItem>
           )}

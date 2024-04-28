@@ -55,7 +55,7 @@ export function BehaviorForm() {
           name="behavior"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Patient's Behavior</FormLabel>
+              <FormLabel>Patient Behavior</FormLabel>
               <FormControl>
                 <Input placeholder="Behaviors" {...field} />
               </FormControl>
@@ -70,7 +70,7 @@ export function BehaviorForm() {
           name="responsiveness"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Patient's Responsiveness</FormLabel>
+              <FormLabel>Patient Responsiveness</FormLabel>
               <FormControl>
                 <Input placeholder="Responsiveness" {...field} />
               </FormControl>
