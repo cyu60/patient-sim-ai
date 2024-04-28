@@ -1,7 +1,11 @@
 import { SignIn } from "@clerk/clerk-react";
 import {
-  ClerkLoading, ClerkLoaded,
-  SignedIn, SignedOut, SignInButton, UserButton
+  ClerkLoading,
+  ClerkLoaded,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
 } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
 
@@ -10,9 +14,10 @@ const HomePage = () => {
     <div className="relative bg-white">
       <header className="h-20 w-full border-b-2 border-slate-200 px-4">
         <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
-
           <div className="pt-8 pl-4 pb-7 flex items-center gap-x-3">
-            <h1 className="text-2xl font-extrabold text-grey-500 tracking-wide">PatientSimAI</h1>
+            <h1 className="text-2xl font-extrabold text-grey-500 tracking-wide">
+              PatientSimAI
+            </h1>
           </div>
 
           <div className="col-span-5 flex items-center justify-end">
@@ -25,10 +30,7 @@ const HomePage = () => {
               </SignedIn>
 
               <SignedOut>
-                <SignInButton
-                  mode="modal"
-                  forceRedirectUrl={"/students"}
-                >
+                <SignInButton mode="modal" forceRedirectUrl={"/roles"}>
                   <button className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                     Log in
                   </button>
@@ -72,8 +74,10 @@ const HomePage = () => {
             <div className="mt-10 flex items-center gap-x-6">
               <ClerkLoaded>
                 <SignedIn>
-                  <a href="#"
-                    className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                  <a
+                    href="#"
+                    className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
                     Get Started
                   </a>
                 </SignedIn>
@@ -81,14 +85,14 @@ const HomePage = () => {
                 <SignedOut>
                   <SignInButton
                     mode="modal"
-                    forceRedirectUrl={"/students"}
+                    forceRedirectUrl={"/roles"}
+                    signUpForceRedirectUrl={"/roles"}
                   >
                     <button className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                       Get Started
                     </button>
                   </SignInButton>
                 </SignedOut>
-
               </ClerkLoaded>
 
               <a
