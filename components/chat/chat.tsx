@@ -7,14 +7,19 @@ interface Props {
   // editor?: monaco.editor.IStandaloneCodeEditor; // first load is empty
   userName: string;
   userId: string;
-  roomId: string;
+  currentCase: StudentClinicalCase;
 }
 
 import { Message, useChat } from "ai/react";
 import { DEFAULTQ } from "./constants";
-import { FormEvent, useEffect } from "react";
+import { FormEvent, useEffect, useRef } from "react";
 // import { addMessage, getMessages } from "@/actions/chatActions";
 import { chat } from "@/db/schema";
+import { useUser } from "@clerk/nextjs";
+import { StudentClinicalCase, cases } from "@/lib/constants";
+// import {  } from "react";
+
+// import { cases } from "../ListCases";
 
 // const formatMessages = (
 //   chatRecords: (typeof chat.$inferSelect)[]
@@ -36,13 +41,14 @@ import { chat } from "@/db/schema";
 // };
 
 export default function Chat(props: Props) {
-  // const currentText = props.editor?.getValue();
-  const currentText = "";
+  // Will need to get actual list of cases from the backend in the future!
+  // const currentCase = cases.find((e) => e.id.toString() === props.caseId);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const initialMessage: Message[] = [
     {
       id: Date.now().toLocaleString(),
-      content: `You are patient. ${DEFAULTQ}.`,
+      content: `${DEFAULTQ} ${JSON.stringify(props.currentCase)}.`,
       role: "system",
     },
     // {
@@ -53,6 +59,8 @@ export default function Chat(props: Props) {
   ];
 
   // console.log(currentText);
+
+  // const { user, isLoaded } = useUser();
 
   const { messages, input, handleInputChange, handleSubmit, setMessages } =
     useChat({
@@ -77,6 +85,10 @@ export default function Chat(props: Props) {
     //   setMessages([...initialMessage, ...formattedMessages]);
     // });
   }, []);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]); // Dependency on messages ensures it triggers on update
 
   const name = props.userName;
   // TODO: Need to figure out how to get time from the server?
@@ -105,16 +117,25 @@ export default function Chat(props: Props) {
             {messages.slice(1).map((m) => (
               <div key={m.id} className="flex items-start gap-2.5">
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gray-500">
-                  <span className="text-sm font-medium leading-none text-white">
-                    {m.role === "user" ? name.slice(0, 2).toUpperCase() : "AI"}
-                  </span>
+                  {m.role === "user" ? (
+                    <span className="text-sm font-medium leading-none text-white">
+                      {name.slice(0, 2).toUpperCase()}
+                    </span>
+                  ) : (
+                    <img
+                      src={props.currentCase.patientAvatar}
+                      className="object-cover rounded-full"
+                    ></img>
+                  )}
                 </span>
 
                 <div className="flex flex-col gap-1 w-full">
                   {/* <div className="flex flex-col gap-1 w-full max-w-[320px]"> */}
                   <div className="flex items-center space-x-2 rtl:space-x-reverse">
                     <span className="text-sm font-semibold text-gray-900 dark:text-white">
-                      {m.role === "user" ? "User: " : "AI: "}
+                      {m.role === "user"
+                        ? name + ": "
+                        : props.currentCase.patientName + ": "}
                     </span>
                     {/* <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
                         11:46
@@ -131,7 +152,10 @@ export default function Chat(props: Props) {
                 </div>
               </div>
             ))}
+
             <div />
+            <div className="py-4" />
+            <div ref={messagesEndRef} />
 
             <form onSubmit={customHandleSubmit}>
               <input
