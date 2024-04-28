@@ -12,7 +12,7 @@ interface Props {
 
 import { Message, useChat } from "ai/react";
 import { DEFAULTQ } from "./constants";
-import { useEffect } from "react";
+import { FormEvent, useEffect } from "react";
 // import { addMessage, getMessages } from "@/actions/chatActions";
 import { chat } from "@/db/schema";
 
@@ -42,7 +42,7 @@ export default function Chat(props: Props) {
   const initialMessage: Message[] = [
     {
       id: Date.now().toLocaleString(),
-      content: `You are a helpful code tutor. The learner is approaching the question ${DEFAULTQ}.\n The current editor includes ${currentText}`,
+      content: `You are patient. ${DEFAULTQ}.`,
       role: "system",
     },
     // {
@@ -80,22 +80,22 @@ export default function Chat(props: Props) {
 
   const name = props.userName;
   // TODO: Need to figure out how to get time from the server?
-  // const customHandleSubmit = (e) => {
-  //   e.preventDefault(); // Prevent the form from submitting immediately
+  const customHandleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent the form from submitting immediately
 
-  //   // Update the messages state
-  //   setMessages([
-  //     ...(initialMessage as Message[]),
-  //     ...messages.slice(1), // Include the rest of the messages unchanged
-  //   ]);
+    // Update the messages state
+    setMessages([
+      ...(initialMessage as Message[]),
+      ...messages.slice(1), // Include the rest of the messages unchanged
+    ]);
 
-  //   // Call the original handleSubmit if needed or custom submission logic
-  //   handleSubmit(e); // This will reset the input and possibly send the message to the server
-  // };
+    // Call the original handleSubmit if needed or custom submission logic
+    handleSubmit(e); // This will reset the input and possibly send the message to the server
+  };
 
   return (
     <>
-      <div className="flex flex-col w-full mx-auto stretch space-y-4 max-h-[calc(100vh-4rem)] overflow-scroll">
+      <div className="flex flex-col w-full mx-auto stretch space-y-4 max-h-[calc(100vh-4rem)] ">
         {/* <div className="flex flex-col w-full max-w-md mx-auto stretch space-y-4 max-h-screen overflow-scroll"> */}
         {/* Todo: Load in a live question */}
         <div className="mx-4">
@@ -123,7 +123,8 @@ export default function Chat(props: Props) {
                   <div className="flex flex-col leading-1.5 p-4 border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl dark:bg-gray-700">
                     <p className="text-sm font-normal text-gray-900 dark:text-white">
                       {" "}
-                      {/* <MarkdownTextView rawText={m.content}></MarkdownTextView>*/}
+                      {m.content}
+                      {/* <MarkdownTextView rawText={m.content}></MarkdownTextView> */}
                     </p>
                   </div>
                   {/* <span class="text-sm font-normal text-gray-500 dark:text-gray-400">Delivered</span> */}
@@ -132,14 +133,14 @@ export default function Chat(props: Props) {
             ))}
             <div />
 
-            {/* <form onSubmit={customHandleSubmit}>
+            <form onSubmit={customHandleSubmit}>
               <input
                 className="fixed bottom-0 w-full max-w-md p-2 mb-8 border border-gray-300 rounded shadow-xl"
                 value={input}
                 placeholder="Say something..."
                 onChange={handleInputChange}
               />
-            </form> */}
+            </form>
           </div>
         </div>
       </div>
