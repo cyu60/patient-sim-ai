@@ -1,6 +1,46 @@
+import { SignIn } from "@clerk/clerk-react";
+import {
+  ClerkLoading,
+  ClerkLoaded,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/nextjs";
+import { Loader } from "lucide-react";
+
 const HomePage = () => {
   return (
     <div className="relative bg-white">
+      <header className="h-20 w-full border-b-2 border-slate-200 px-4">
+        <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
+          <div className="pt-8 pl-4 pb-7 flex items-center gap-x-3">
+            <h1 className="text-2xl font-extrabold text-grey-500 tracking-wide">
+              PatientSimAI
+            </h1>
+          </div>
+
+          <div className="col-span-5 flex items-center justify-end">
+            <ClerkLoading>
+              <Loader className="h-5 w-5 text-muted-foreground animate-spin" />
+            </ClerkLoading>
+            <ClerkLoaded>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+
+              <SignedOut>
+                <SignInButton mode="modal" forceRedirectUrl={"/roles"}>
+                  <button className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                    Log in
+                  </button>
+                </SignInButton>
+              </SignedOut>
+            </ClerkLoaded>
+          </div>
+        </div>
+      </header>
+
       <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
         <div className="px-6 pb-24 pt-10 sm:pb-32 lg:col-span-7 lg:px-0 lg:pb-56 lg:pt-48 xl:col-span-6">
           <div className="mx-auto max-w-2xl lg:mx-0">
@@ -32,12 +72,29 @@ const HomePage = () => {
               immediate feedback.
             </p>
             <div className="mt-10 flex items-center gap-x-6">
-              <a
-                href="#"
-                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Get started
-              </a>
+              <ClerkLoaded>
+                <SignedIn>
+                  <a
+                    href="#"
+                    className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    Get Started
+                  </a>
+                </SignedIn>
+
+                <SignedOut>
+                  <SignInButton
+                    mode="modal"
+                    forceRedirectUrl={"/roles"}
+                    signUpForceRedirectUrl={"/roles"}
+                  >
+                    <button className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                      Get Started
+                    </button>
+                  </SignInButton>
+                </SignedOut>
+              </ClerkLoaded>
+
               <a
                 href="#"
                 className="text-sm font-semibold leading-6 text-gray-900"

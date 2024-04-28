@@ -52,7 +52,7 @@ export const courses = pgTable("courses", {
   courseName: text("course_name").default("Untitled").notNull(),
   timePeriod: text("time_period").notNull(),
   students: integer("students").default(0).notNull(),
-  cases: integer("cases").default(0).notNull(),
+  cases: integer("cases").default(0).notNull()
 });
 
 // Define associations if required
