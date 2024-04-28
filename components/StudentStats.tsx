@@ -1,6 +1,6 @@
 const stats = [
   { name: "Num of courses", stat: "3" },
-  { name: "Num of Remaining Cases", stat: "3" },
+  { name: "Num of Remaining Cases", stat: "1" },
   { name: "Num of Completed Cases", stat: "4" },
 ];
 
