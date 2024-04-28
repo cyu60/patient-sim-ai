@@ -69,16 +69,16 @@ export const courses = pgTable("courses", {
 
 export const chat = pgTable("chat", {
   messageId: uuid("message_id").primaryKey(), // Unique identifier for each message
-  roomId: uuid("room_id")
-    .references(() => rooms.id, { onDelete: "cascade" })
-    .notNull(), // Foreign key linking to Rooms table
+  // roomId: uuid("room_id")
+  //   .references(() => rooms.id, { onDelete: "cascade" })
+  //   .notNull(), // Foreign key linking to Rooms table
   userId: uuid("user_id")
     .references(() => users.userId, { onDelete: "cascade" })
     .notNull(), // Foreign key linking to Users table
   userInput: text("user_input").notNull(), // The content of the message
   assistantResponse: text("assistant_response"), // The response from the assistant
   assistantName: text("assistant_name"), // The name of the assistant
-  timeCreated: timestamp("time_created").notNull(), // Timestamp of when the message was created
+  // timeCreated: timestamp("time_created").notNull(), // Timestamp of when the message was created
 });
 
 // Define associations if required
