@@ -1,15 +1,18 @@
 import { getCourses } from "@/db/queries";
+//import { getCourses, getUsers } from "@/db/queries";
 import { List } from "./list";
 import { json } from "stream/consumers";
+import { users } from "@/db/schema";
 
 const CoursesPage = async () => {
   const courses = await getCourses();
+  //const users = await getUsers();
 
   return (
     <div className="h-full max-w-[912px] px-3 mx-auto">
       <h1 className="text-2xl font-bold text-neutral-700">Courses</h1>
       {JSON.stringify(courses)}
-      <List courses={courses} activeCourseId={1} />
+      <List courses={courses} activeCourseId = {1} />
     </div>
   );
 };

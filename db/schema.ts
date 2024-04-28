@@ -9,11 +9,38 @@ import {
   uuid,
 } from "drizzle-orm/pg-core";
 
+// export const users = pgTable("users", {
+//   userId: serial("user_id").primaryKey(),
+//   username: text("username").notNull(),
+//   role: text("role").notNull(), // Assume 'student' or 'teacher'
+//   activeCourseId: integer("active_course_id").references(() => courses.id, 
+//   { onDelete: "cascade" }), //be care
+// });
+
 export const users = pgTable("users", {
   userId: serial("user_id").primaryKey(),
   username: text("username").notNull(),
   role: text("role").notNull(), // Assume 'student' or 'teacher'
+  activeCourseId: integer("active_course_id").references(() => courses.id,
+    { onDelete: "set null"}), //be care
 });
+
+// export const userCourses = pgTable("user_courses", {
+//   userId: integer("user_id").references(() => users.userId, { onDelete: "cascade" }),
+//   courseId: integer("course_id").references(() => courses.id, { onDelete: "cascade" }),
+// });
+
+
+export const userRelations = relations(users, ({ many }) => ({
+  activeCourse: many(courses),
+}))
+
+// export const userRelations = relations(users, ({ one }) => ({
+//   activeCourse: one(courses, {
+//     fields: [users.activeCourseId],
+//     references: [courses.id],
+//   }),
+// }))
 
 export const clinicalCases = pgTable("clinical_cases", {
   id: serial("id").primaryKey(),
@@ -59,6 +86,10 @@ export const clinicalCases = pgTable("clinical_cases", {
   ).notNull(),
 });
 
+export const clinicalCasesRelations = relations(clinicalCases, ({ many }) => ({
+  courses: many(courses),
+}));
+
 export const courses = pgTable("courses", {
   id: serial("id").primaryKey(),
   courseName: text("course_name").default("Untitled").notNull(),
@@ -67,12 +98,17 @@ export const courses = pgTable("courses", {
   cases: integer("cases").default(0).notNull(),
 });
 
+export const coursesRelations = relations(courses, ({ many }) => ({
+  users: many(users),
+  clinicalCases: many(clinicalCases),
+}));
+
 export const chat = pgTable("chat", {
   messageId: uuid("message_id").primaryKey(), // Unique identifier for each message
   // roomId: uuid("room_id")
   //   .references(() => rooms.id, { onDelete: "cascade" })
   //   .notNull(), // Foreign key linking to Rooms table
-  userId: uuid("user_id")
+  userId: serial("user_id")
     .references(() => users.userId, { onDelete: "cascade" })
     .notNull(), // Foreign key linking to Users table
   userInput: text("user_input").notNull(), // The content of the message
