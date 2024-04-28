@@ -7,7 +7,7 @@ export default function SettingsPatientDiagnosisPage() {
       <div>
         <h3 className="text-lg font-medium">Possible Diagnosis</h3>
         <p className="text-sm text-muted-foreground">
-          The patient's diagnosis
+          The diagnosis of the patient
         </p>
       </div>
       <Separator />
