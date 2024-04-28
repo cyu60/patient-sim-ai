@@ -10,13 +10,13 @@ import {
 } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users", {
-  userId: uuid("user_id").primaryKey(),
+  userId: serial("user_id").primaryKey(),
   username: text("username").notNull(),
   role: text("role").notNull(), // Assume 'student' or 'teacher'
 });
 
 export const clinicalCases = pgTable("clinical_cases", {
-  id: uuid("id").primaryKey(),
+  id: serial("id").primaryKey(),
   patientName: text("patient_name").notNull(),
   age: integer("age").notNull(),
   gender: text("gender").notNull(),
@@ -52,7 +52,7 @@ export const courses = pgTable("courses", {
   courseName: text("course_name").default("Untitled").notNull(),
   timePeriod: text("time_period").notNull(),
   students: integer("students").default(0).notNull(),
-  cases: integer("cases").default(0).notNull()
+  cases: integer("cases").default(0).notNull(),
 });
 
 // Define associations if required
