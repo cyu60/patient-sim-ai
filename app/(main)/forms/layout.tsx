@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const sidebarNavItems = [
   {
     title: "Identification",
-    href: "/forms/identification",
+    href: "/forms",
   },
   {
     title: "Physical Traits",
