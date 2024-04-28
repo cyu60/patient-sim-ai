@@ -1,5 +1,5 @@
 import { Separator } from "@/registry/new-york/ui/separator"
-import { IdentificationForm } from "@/app/(main)/forms/identification/identification-form"
+import { IdentificationForm } from "@/app/(main)/teachers/forms/identification/identification-form"
 
 export default function SettingsIdentificationPage() {
   return (

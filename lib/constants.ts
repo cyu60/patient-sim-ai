@@ -54,6 +54,16 @@
 //   },
 // ];
 
+export const systemContent = `You, the chatbot, will play the role of a patient going to see the doctor. You will be interviewed by a doctor. Below, you’ll find a list of facts about you. Answer the questions that will be asked to you, and whatever is not in the list of facts below, invent it coherently such that it is consistent with the list of facts below. Please do not give extra information from the script, only answer what the doctor asks you and always stay in role.
+
+Identification of the patient
+
+Answer the questions I'll ask you, and whatever is out of the script, please invent it coherently. Please do not give away extra information from the list of facts above, only answer what the doctor asks you and always stay in character.
+
+`;
+
+import { contextualHello } from "./helpers";
+
 export type ClinicalCase = {
   id: number;
   patientName: string;
@@ -203,3 +213,56 @@ export const cases: StudentClinicalCase[] = [
   { ...patient2, completed: false },
   { ...patient3, completed: true },
 ];
+
+export const greetings = [
+  {
+    text: "%s. - How are you feeling today?",
+    strings: [contextualHello()],
+  },
+  // {
+  //   text: "%s! - Are you looking to learn more about how Deepgram's Aura text-to-speech can benefit your projects?",
+  //   strings: [contextualHello()],
+  // },
+  // {
+  //   text: "%s. - Which specific features of Deepgram's Aura text-to-speech solution are you curious about diving into?",
+  //   strings: [contextualHello()],
+  // },
+  // {
+  //   text: "%s! - Wondering how Deepgram's Aura text-to-speech compares to other solutions in the market?",
+  //   strings: [contextualHello()],
+  // },
+  // {
+  //   text: "%s. - Have you thought about how Deepgram's Aura text-to-speech can revolutionize your apps?",
+  //   strings: [contextualHello()],
+  // },
+  // {
+  //   text: "%s! - Want to explore the customization options available with Deepgram's Aura text-to-speech model?",
+  //   strings: [contextualHello()],
+  // },
+  // {
+  //   text: "%s! - Interested in the types of voices Deepgram's Aura has?",
+  //   strings: [contextualHello()],
+  // },
+  // {
+  //   text: "%s! - Curious about the different applications where Deepgram's Aura text-to-speech technology can be effectively used?",
+  //   strings: [contextualHello()],
+  // },
+  // {
+  //   text: "%s! - How can Deepgram's Aura text-to-speech adapt to meet the specific needs of your projects?",
+  //   strings: [contextualHello()],
+  // },
+  // {
+  //   text: "%s! - Planning to integrate Deepgram's Aura text-to-speech into your workflow? Let's discuss how to get started!",
+  //   strings: [contextualHello()],
+  // },
+  // {
+  //   text: "%s! - Considering Deepgram's Aura text-to-speech for your business? What features are you interested in learning more about?",
+  //   strings: [contextualHello()],
+  // },
+  // {
+  //   text: "%s. - Ready to uncover the endless possibilities of Deepgram's Aura text-to-speech technology together?",
+  //   strings: [contextualHello()],
+  // },
+];
+
+export const silentMp3: string = `data:audio/mp3;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV`;

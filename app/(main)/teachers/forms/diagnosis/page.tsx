@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator"
-import { DiagnosisForm } from "@/app/(main)/forms/diagnosis/diagnosis-form"
+import { DiagnosisForm } from "@/app/(main)/teachers/forms/diagnosis/diagnosis-form"
 
 export default function SettingsPatientDiagnosisPage() {
   return (
