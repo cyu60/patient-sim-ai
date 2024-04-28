@@ -16,27 +16,28 @@ import {
 import { Input } from "@/registry/new-york/ui/input"
 import { toast } from "@/registry/new-york/ui/use-toast"
 
-const PhysicalTraitsFormSchema = z.object({
-  weight: z.string(),
-  height: z.string(),
-  details: z.string()
+const DiagnosisFormSchema = z.object({
+  workingDiagnosis: z.string(),
+  diagnosisReason: z.string(),
+  differentialDiagnosis: z.string(),
+  differentialReasons: z.string()
 })
 
-type PhysicalTraitsFormValues = z.infer<typeof PhysicalTraitsFormSchema>
+type DiagnosisFormValues = z.infer<typeof DiagnosisFormSchema>
 
 // This can come from your database or API.
-const defaultValues: Partial<PhysicalTraitsFormValues> = {
+const defaultValues: Partial<DiagnosisFormValues> = {
   // name: "Your name",
   // dob: new Date("2023-01-23"),
 }
 
-export function PhysicalTraitsForm() {
-  const form = useForm<PhysicalTraitsFormValues>({
-    resolver: zodResolver(PhysicalTraitsFormSchema),
+export function DiagnosisForm() {
+  const form = useForm<DiagnosisFormValues>({
+    resolver: zodResolver(DiagnosisFormSchema),
     defaultValues,
   })
 
-  function onSubmit(data: PhysicalTraitsFormValues) {
+  function onSubmit(data: DiagnosisFormValues) {
     toast({
       title: "You submitted the following values:",
       description: (
@@ -50,50 +51,62 @@ export function PhysicalTraitsForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+
+        <FormField
+          control={form.control}
+          name="workingDiagnosis"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Working Diagnosis</FormLabel>
+              <FormControl>
+                <Input placeholder="Diagnosis" {...field} />
+              </FormControl>
+              <FormDescription>
+              </FormDescription>
+            </FormItem>
+          )}
+        />
+
+<FormField
+          control={form.control}
+          name="diagnosisReason"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Working Diagnosis</FormLabel>
+              <FormControl>
+                <Input placeholder="Diagnosis Rationale" {...field} />
+              </FormControl>
+              <FormDescription>
+              </FormDescription>
+            </FormItem>
+          )}
+        />
         
         <FormField
           control={form.control}
-          name="weight"
+          name="differentialDiagnosis"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Weight</FormLabel>
+              <FormLabel>Differential Diagnosis</FormLabel>
               <FormControl>
-                <Input placeholder="Patient's Weight" {...field} />
+                <Input placeholder="Differential Diagnosis" {...field} />
               </FormControl>
               <FormDescription>
-                This is the weight of the patient
               </FormDescription>
             </FormItem>
           )}
         />
 
-        <FormField
+<FormField
           control={form.control}
-          name="height"
+          name="differentialReasons"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Height</FormLabel>
+              <FormLabel>Differential Diagnosis Rationales</FormLabel>
               <FormControl>
-                <Input placeholder="Patient's Height" {...field} />
+                <Input placeholder="Differential Diagnosis Rationales" {...field} />
               </FormControl>
               <FormDescription>
-                This is the height of the patient.
-              </FormDescription>
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="details"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Important Physical Details</FormLabel>
-              <FormControl>
-                <Input placeholder="Details" {...field} />
-              </FormControl>
-              <FormDescription>
-                Any additional important physical details?
               </FormDescription>
             </FormItem>
           )}

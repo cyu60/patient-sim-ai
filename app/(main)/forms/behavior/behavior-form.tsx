@@ -16,27 +16,26 @@ import {
 import { Input } from "@/registry/new-york/ui/input"
 import { toast } from "@/registry/new-york/ui/use-toast"
 
-const PhysicalTraitsFormSchema = z.object({
-  weight: z.string(),
-  height: z.string(),
-  details: z.string()
+const BehaviorFormSchema = z.object({
+  behavior: z.string(),
+  responsiveness: z.string()
 })
 
-type PhysicalTraitsFormValues = z.infer<typeof PhysicalTraitsFormSchema>
+type BehaviorFormValues = z.infer<typeof BehaviorFormSchema>
 
 // This can come from your database or API.
-const defaultValues: Partial<PhysicalTraitsFormValues> = {
+const defaultValues: Partial<BehaviorFormValues> = {
   // name: "Your name",
   // dob: new Date("2023-01-23"),
 }
 
-export function PhysicalTraitsForm() {
-  const form = useForm<PhysicalTraitsFormValues>({
-    resolver: zodResolver(PhysicalTraitsFormSchema),
+export function BehaviorForm() {
+  const form = useForm<BehaviorFormValues>({
+    resolver: zodResolver(BehaviorFormSchema),
     defaultValues,
   })
 
-  function onSubmit(data: PhysicalTraitsFormValues) {
+  function onSubmit(data: BehaviorFormValues) {
     toast({
       title: "You submitted the following values:",
       description: (
@@ -50,18 +49,17 @@ export function PhysicalTraitsForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        
+
         <FormField
           control={form.control}
-          name="weight"
+          name="behavior"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Weight</FormLabel>
+              <FormLabel>Patient's Behavior</FormLabel>
               <FormControl>
-                <Input placeholder="Patient's Weight" {...field} />
+                <Input placeholder="Behaviors" {...field} />
               </FormControl>
               <FormDescription>
-                This is the weight of the patient
               </FormDescription>
             </FormItem>
           )}
@@ -69,35 +67,20 @@ export function PhysicalTraitsForm() {
 
         <FormField
           control={form.control}
-          name="height"
+          name="responsiveness"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Height</FormLabel>
+              <FormLabel>Patient's Responsiveness</FormLabel>
               <FormControl>
-                <Input placeholder="Patient's Height" {...field} />
+                <Input placeholder="Responsiveness" {...field} />
               </FormControl>
               <FormDescription>
-                This is the height of the patient.
               </FormDescription>
             </FormItem>
           )}
         />
 
-        <FormField
-          control={form.control}
-          name="details"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Important Physical Details</FormLabel>
-              <FormControl>
-                <Input placeholder="Details" {...field} />
-              </FormControl>
-              <FormDescription>
-                Any additional important physical details?
-              </FormDescription>
-            </FormItem>
-          )}
-        />
+
 
         <Button type="submit">Save</Button>
       </form>
