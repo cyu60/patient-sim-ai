@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator"
-import { PhysicalTraitsForm } from "@/app/(main)/forms/physicalTraits/physicalTraits-form"
+import { PhysicalTraitsForm } from "@/app/(main)/teachers/forms/physicalTraits/physicalTraits-form"
 import { MedicalHistoryForm } from "./medicalHistory-form"
 
 export default function SettingsPhysicalTraitsPage() {

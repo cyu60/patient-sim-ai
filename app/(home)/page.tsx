@@ -20,9 +20,9 @@ const HomePage = () => {
         <div className="flex items-center justify-between h-full">{/*rmvd lg:max-w-screen-lg mx-auto*/}
           <div className="pt-8 pl-4 pb-7 flex items-center gap-x-3">
             <Image src="/patientSimLogo.png" height={80} width={80} alt="Logo" />
-            <h1 className="text-2xl font-extrabold text-grey-500 tracking-wide">
+            <a href ="" className="text-2xl font-extrabold text-grey-500 tracking-wide">
               PatientSimAI
-            </h1>
+            </a>
           </div>
 
           <div className="col-span-5 flex items-center justify-end">
@@ -76,7 +76,7 @@ const HomePage = () => {
               <ClerkLoaded>
                 <SignedIn>
                   <a
-                    href="#"
+                    href="roles"
                     className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     Get Started

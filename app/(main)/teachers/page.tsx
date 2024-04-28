@@ -7,6 +7,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import Link from "next/link"
+//import { Link } from "lucide-react";
 
 const classes = [
   {
@@ -35,7 +37,6 @@ const TeacherPage = () => {
   // need to make sure that students can't access it here?
   return (
     <div>
-      <h1>Teacher Page</h1>
       <Table>
         <TableCaption>Class Information for Medical Courses</TableCaption>
         <TableHeader>

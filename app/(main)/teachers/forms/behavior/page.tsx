@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator"
-import { BehaviorForm } from "@/app/(main)/forms/behavior/behavior-form"
+import { BehaviorForm } from "@/app/(main)/teachers/forms/behavior/behavior-form"
 
 export default function SettingsPatientBehaviorPage() {
   return (
