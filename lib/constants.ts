@@ -135,11 +135,11 @@ export const patient1: ClinicalCase = {
 
 export const patient2: ClinicalCase = {
   id: 2,
-  patientName: "Mary Smith",
+  patientName: "Jessie Johnson",
   patientAvatar:
     "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   age: 30,
-  gender: "Female",
+  gender: "Male",
   raceEthnicity: "Hispanic",
   weight: 130,
   height: "5'4\"",
@@ -170,11 +170,11 @@ export const patient2: ClinicalCase = {
 
 export const patient3: ClinicalCase = {
   id: 3,
-  patientName: "Alice Johnson",
+  patientName: "Chris Erickson",
   patientAvatar:
     "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   age: 58,
-  gender: "Female",
+  gender: "Male",
   raceEthnicity: "African American",
   weight: 165,
   height: "5'6\"",
