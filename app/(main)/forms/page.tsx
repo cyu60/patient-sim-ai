@@ -1,5 +1,4 @@
 import { Separator } from "@/components/ui/separator"
-import { ProfileForm } from "@/app/(main)/forms/profile-form"
 import { IdentificationForm } from "./identification/identification-form"
 
 export default function SettingsProfilePage() {
