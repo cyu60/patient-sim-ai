@@ -1,17 +1,18 @@
 import { Separator } from "@/components/ui/separator"
 import { ProfileForm } from "@/app/(main)/forms/profile-form"
+import { IdentificationForm } from "./identification/identification-form"
 
 export default function SettingsProfilePage() {
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-medium">Profile</h3>
+        <h3 className="text-lg font-medium">Identification</h3>
         <p className="text-sm text-muted-foreground">
-          This is how others will see you on the site.
+          Basic patient identification information
         </p>
       </div>
       <Separator />
-      <ProfileForm />
+      <IdentificationForm />
     </div>
   )
 }
