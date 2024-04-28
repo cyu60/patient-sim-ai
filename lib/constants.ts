@@ -99,11 +99,11 @@ export type ClinicalCase = {
 
 export const patient1: ClinicalCase = {
   id: 1,
-  patientName: "John Doe",
+  patientName: "Alice Smith",
   patientAvatar:
     "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   age: 45,
-  gender: "Male",
+  gender: "Female",
   raceEthnicity: "Caucasian",
   weight: 200,
   height: "6'0\"",
