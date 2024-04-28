@@ -1,5 +1,6 @@
-import { Separator } from "@/registry/new-york/ui/separator"
+import { Separator } from "@/components/ui/separator"
 import { PhysicalTraitsForm } from "@/app/(main)/forms/physicalTraits/physicalTraits-form"
+import { MedicalHistoryForm } from "./medicalHistory-form"
 
 export default function SettingsPhysicalTraitsPage() {
   return (
@@ -11,7 +12,7 @@ export default function SettingsPhysicalTraitsPage() {
         </p>
       </div>
       <Separator />
-      <PhysicalTraitsForm />
+      <MedicalHistoryForm />
     </div>
   )
 }

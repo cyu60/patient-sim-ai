@@ -1,21 +1,8 @@
 "use client"
-
 import { zodResolver } from "@hookform/resolvers/zod"
-import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
-import { format } from "date-fns"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-
-import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"
-import { Calendar } from "@/registry/new-york/ui/calendar"
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "@/registry/new-york/ui/command"
 import {
   Form,
   FormControl,
@@ -26,12 +13,8 @@ import {
   FormMessage,
 } from "@/registry/new-york/ui/form"
 import { Input } from "@/registry/new-york/ui/input"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/new-york/ui/popover"
 import { toast } from "@/registry/new-york/ui/use-toast"
+
 
 const MedicalHistoryFormSchema = z.object({
   primaryComplaint: z.string(),
@@ -59,7 +42,7 @@ const defaultValues: Partial<MedicalHistoryFormValues> = {
   // dob: new Date("2023-01-23"),
 }
 
-export function PhysicalTraitsForm() {
+export function MedicalHistoryForm() {
   const form = useForm<MedicalHistoryFormValues>({
     resolver: zodResolver(MedicalHistoryFormSchema),
     defaultValues,
@@ -79,7 +62,7 @@ export function PhysicalTraitsForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        
+
         <FormField
           control={form.control}
           name="primaryComplaint"
@@ -96,7 +79,7 @@ export function PhysicalTraitsForm() {
           )}
         />
 
-<FormField
+        <FormField
           control={form.control}
           name="symptomHistory"
           render={({ field }) => (
@@ -112,7 +95,7 @@ export function PhysicalTraitsForm() {
           )}
         />
 
-<FormField
+        <FormField
           control={form.control}
           name="healthBelief"
           render={({ field }) => (
@@ -128,7 +111,7 @@ export function PhysicalTraitsForm() {
           )}
         />
 
-<FormField
+        <FormField
           control={form.control}
           name="externalConcerns"
           render={({ field }) => (
@@ -138,39 +121,195 @@ export function PhysicalTraitsForm() {
                 <Input placeholder="General concerns" {...field} />
               </FormControl>
               <FormDescription>
-              External or general concerns the patient has surrounding their health and health outcomes
+                External or general concerns the patient has surrounding their health and health outcomes
               </FormDescription>
             </FormItem>
           )}
         />
 
-<FormField
+        <FormField
           control={form.control}
           name="externalConcerns"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Patient's Health Belief</FormLabel>
+              <FormLabel>Patient's General Concerns</FormLabel>
               <FormControl>
                 <Input placeholder="General concerns" {...field} />
               </FormControl>
               <FormDescription>
-              External or general concerns the patient has surrounding their health and health outcomes
+                External or general concerns the patient has surrounding their health and health outcomes
               </FormDescription>
             </FormItem>
           )}
         />
 
-  generalHistory: z.string(),
-  gynObHistory: z.string(),
-  exposureHistory: z.string(),
-  immunizations: z.string(),
-  medications: z.string(),
-  allergies: z.string(),
-  preventiveCareHistory: z.string(),
-  previousTestResults: z.string(),
-  familyHistory: z.string(),
-  socialHistory: z.string(),
-  habits: z.string()
+        <FormField
+          control={form.control}
+          name="generalHistory"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Patient's General Medical History</FormLabel>
+              <FormControl>
+                <Input placeholder="Medical History" {...field} />
+              </FormControl>
+              <FormDescription>
+                Describe any past medical history including hospitalizations, medical illnesses/chronic problems, past surgeries, accidents, or injuries
+              </FormDescription>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="gynObHistory"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Patient's OB / Gynecologist History</FormLabel>
+              <FormControl>
+                <Input placeholder="Medical History" {...field} />
+              </FormControl>
+              <FormDescription>
+                Patient's OB / Gynecologist History
+              </FormDescription>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="exposureHistory"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Exposure History</FormLabel>
+              <FormControl>
+                <Input placeholder="Exposure History" {...field} />
+              </FormControl>
+              <FormDescription>
+              </FormDescription>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="immunizations"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Immunization History</FormLabel>
+              <FormControl>
+                <Input placeholder="Immunizations" {...field} />
+              </FormControl>
+              <FormDescription>
+              </FormDescription>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="medications"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Medications</FormLabel>
+              <FormControl>
+                <Input placeholder="Medications" {...field} />
+              </FormControl>
+              <FormDescription>
+              </FormDescription>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="allergies"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Allergies</FormLabel>
+              <FormControl>
+                <Input placeholder="Allergies" {...field} />
+              </FormControl>
+              <FormDescription>
+              </FormDescription>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="preventiveCareHistory"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Preventive Healthcare History</FormLabel>
+              <FormControl>
+                <Input placeholder="Healthcare" {...field} />
+              </FormControl>
+              <FormDescription>
+              </FormDescription>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="previousTestResults"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Previous Important Test Results</FormLabel>
+              <FormControl>
+                <Input placeholder="Tests" {...field} />
+              </FormControl>
+              <FormDescription>
+              </FormDescription>
+            </FormItem>
+          )}
+        />
+
+
+        <FormField
+          control={form.control}
+          name="familyHistory"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Related Family History</FormLabel>
+              <FormControl>
+                <Input placeholder="Family History" {...field} />
+              </FormControl>
+              <FormDescription>
+              </FormDescription>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="socialHistory"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Related Social History</FormLabel>
+              <FormControl>
+                <Input placeholder="Social History" {...field} />
+              </FormControl>
+              <FormDescription>
+              </FormDescription>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="habits"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Related Habits</FormLabel>
+              <FormControl>
+                <Input placeholder="Habits" {...field} />
+              </FormControl>
+              <FormDescription>
+              </FormDescription>
+            </FormItem>
+          )}
+        />
 
         <Button type="submit">Save</Button>
       </form>

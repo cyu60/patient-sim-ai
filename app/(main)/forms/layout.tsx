@@ -21,6 +21,14 @@ const sidebarNavItems = [
   {
     title: "Medical History",
     href: "/forms/medicalHistory",
+  },
+  {
+    title: "Patient Behavior",
+    href: "/forms/behavior",
+  },
+  {
+    title: "Diagnosis",
+    href: "/forms/diagnosis",
   }
 ]
 

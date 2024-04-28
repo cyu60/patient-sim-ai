@@ -1,16 +1,19 @@
 "use client"
-
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Form, useForm } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import { z } from "zod"
-
-import { cn } from "@/lib/utils"
-
-import { FormControl, FormDescription, FormField, FormItem, FormLabel } from "@/components/ui/form"
-import { toast } from "@/components/ui/use-toast"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-
+import { Button } from "@/registry/new-york/ui/button"
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/registry/new-york/ui/form"
+import { Input } from "@/registry/new-york/ui/input"
+import { toast } from "@/registry/new-york/ui/use-toast"
 
 const indentificationFormSchema = z.object({
   name: z
