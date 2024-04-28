@@ -5,7 +5,7 @@ const StudentPage = () => {
   return (
     <div>
       <h1>Student Page</h1>
-      <div className="p-6 bg-slate-100 space-y-10">
+      <div className="p-6 space-y-10">
         <Stats></Stats>
         <ListCases></ListCases>
       </div>

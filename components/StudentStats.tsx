@@ -1,15 +1,15 @@
 const stats = [
-  { name: "Total Subscribers", stat: "71,897" },
-  { name: "Avg. Open Rate", stat: "58.16%" },
-  { name: "Avg. Click Rate", stat: "24.57%" },
+  { name: "Num of courses", stat: "3" },
+  { name: "Num of Remaining Cases", stat: "3" },
+  { name: "Num of Completed Cases", stat: "4" },
 ];
 
 export default function Stats() {
   return (
     <div>
-      <h3 className="text-base font-semibold leading-6 text-gray-900">
+      {/* <h3 className="text-base font-semibold leading-6 text-gray-900">
         Last 30 days
-      </h3>
+      </h3> */}
       <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
         {stats.map((item) => (
           <div
